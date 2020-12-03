@@ -1,0 +1,14 @@
+<table class="table">
+	<tr><%= attachment_image_tag(member, :image, size:"150x150", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg") %></tr>
+
+	<tr>
+		<th class="text-center"><%= member.name %></th>
+	</tr>
+	<tr>
+		<th class="text-center"><%= member.introduction %></th>
+	</tr>
+</table>
+
+<div class="row">
+	<%= link_to 'ユーザー情報を編集する', edit_member_path(member), class: "col-xs-12 btn btn-success edit_member_#{member.id}" %>
+</div>

@@ -72,3 +72,10 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'activeadmin'
+gem 'carrierwave'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
+gem 'mini_magick'
+gem 'font-awesome-sass'

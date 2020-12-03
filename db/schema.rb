@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_085334) do
+ActiveRecord::Schema.define(version: 2020_11_28_200911) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 2020_11_16_085334) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
@@ -35,6 +47,12 @@ ActiveRecord::Schema.define(version: 2020_11_16_085334) do
   create_table "favorites", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "member_id"
+    t.integer "movie_id"
+    t.integer "review_id"
+    t.index ["member_id"], name: "index_favorites_on_member_id"
+    t.index ["movie_id"], name: "index_favorites_on_movie_id"
+    t.index ["review_id"], name: "index_favorites_on_review_id"
   end
 
   create_table "ivents", force: :cascade do |t|
@@ -58,16 +76,29 @@ ActiveRecord::Schema.define(version: 2020_11_16_085334) do
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "introduction"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "mobies", force: :cascade do |t|
+  create_table "movies", force: :cascade do |t|
     t.string "title"
     t.text "introduction"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "movie_id"
+    t.string "title"
+    t.text "content"
+    t.float "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_reviews_on_member_id"
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
   end
 
   create_table "tags", force: :cascade do |t|

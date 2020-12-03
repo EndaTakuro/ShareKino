@@ -1,0 +1,42 @@
+  <h2 class="nav nav-pills navbar-left logo">
+    <%= link_to root_path, class: "EDITlink" do %>
+      <i class="fas fa-film"></i> shareKino
+    <% end %>
+  </h2>
+
+<nav>
+    <ul class="nav nav-pills navbar-right">
+      <% if member_signed_in? %>
+       <!--ログインしている時-->
+        <li class="header-name">
+          ようこそ、<%= current_member.name %>さん！
+        </li>
+        <li class="header-item">
+          <%= link_to " mypage", member_path(current_member), class: "header_btn glyphicon glyphicon-user" %>
+        </li>
+        <li class="header-item">
+          <%= link_to " movies", movies_path, class: "header_btn glyphicon glyphicon-leaf" %>
+        </li>
+        <li class="header-item">
+          ivents
+        </li>
+        <li class="header-item">
+          <%= link_to " log out", destroy_member_session_path, method: :delete, class: "header_btn glyphicon glyphicon-leaf" %>
+        </li>
+      <% else %>
+      <!--ログインしていない時-->
+        <li class="header-item">
+          <%= link_to " about", about_path, class: "header_btn glyphicon glyphicon-leaf" %>
+        </li>
+        <li class="header-item">
+          <%= link_to " movies", movies_path, class: "header_btn glyphicon glyphicon-leaf" %>
+        </li>
+        <li class="header-item">
+          <%= link_to " sign up", new_member_registration_path, class: "header_btn glyphicon glyphicon-leaf" %>
+        </li>
+        <li class="header-item">
+          <%= link_to " log in", new_member_session_path, class: "header_btn glyphicon glyphicon-leaf" %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>

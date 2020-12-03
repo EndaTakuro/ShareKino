@@ -1,0 +1,11 @@
+<% if review.favorited_by?(current_member) %>
+  <%= link_to movie_review_favorites_path(review.movie_id,review.id), method: :delete do %>
+	  <span class="fa fa-heart like-btn-unlike"></span>
+  <% end %>
+  <%= review.favorites.count %>
+<% else %>
+  <%= link_to movie_review_favorites_path(review.movie_id,review.id), method: :post do %>
+	  <span class="fa fa-heart like-btn"></span>
+  <% end %>
+  <%= review.favorites.count %>
+<% end %>

@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-xs-3">
+		<h2>User infomation</h2>
+		<%= render 'members/profile', member: @member %>
+	</div>
+	<div class="col-xs-9">
+		<h4 class="text-center movie_index">review一覧</h4>
+		<!--review一覧 -->
+		<% @member.reviews.each do |review| %>
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="movie-image">
+						<%= image_tag review.movie.image_id.url ,width: '100px' %><br>
+						<%= link_to review.movie.title, movie_path(review.movie_id) %><br>
+					</div>
+					<div id="star-rate-<%= review.id %>"></div>
+          <script>
+	          $('#star-rate-<%= review.id %>').raty({
+	            size: 36,
+	            starOff:  '<%= asset_path('star-off.png') %>',
+	            starOn : '<%= asset_path('star-on.png') %>',
+	            starHalf: '<%= asset_path('star-half.png') %>',
+	            half: true,
+	            readOnly: true,
+	            score: <%= review.score %>,
+	          });
+          </script>
+         	<br>
+        </div>
+        <div class="col-xs-9">
+					<%= review.title %> |
+				<td class="favorite-btn">
+					<%= render "favorites/favorite-btn", review: review %>
+				</td><br>
+					<%= review.content %><br>
+				</div>
+			</div>
+		<% end %>
+		<!--review一覧 -->
+	</div>
+</div>

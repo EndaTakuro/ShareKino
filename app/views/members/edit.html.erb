@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h2>会員情報</h2>
+
+    <%= form_with model:@member, local: true do |f| %>
+
+    	<!-- エラーメッセージ表示-->
+    	<%= render 'layouts/error_messages', model: f.object %>
+
+    	<div class="field">
+    		<%= f.label :image_id %>
+    		<%= attachment_image_tag(@member, :image, size:"100x100", class: "img-circle pull-left profile-thumb", format: 'jpeg', fallback: "no_image.jpg") %>
+    		<%= f.attachment_field :image, class: "member_image" %>
+    	</div>
+
+
+    	<div class="field">
+    		<%= f.label :name %><br>
+    		<%= f.text_field :name, class: "name" %>
+    	</div>
+
+    	<div class="field">
+        <%= f.label :introduction %><br>
+    		<%= f.text_field :introduction, class: "name" %>
+    	</div>
+
+    	<div class="actions">
+    		<%= f.submit "編集内容を保存", class: "btn btn-danger" %>
+    	</div>
+
+    <% end %>
+  </div>
+</div>

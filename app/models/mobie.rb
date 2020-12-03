@@ -1,2 +1,0 @@
-class Mobie < ApplicationRecord
-end

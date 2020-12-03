@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      admin_user: "管理者"
+      comment: "コメント"
+      movie: "映画"
+      member: "会員"
+    attributes:
+      admin_user:
+        id: "登録番号"
+        email: "メールアドレス"
+        current_sign_in_at: "ログイン状態"
+        sign_in_count: "ログイン回数"
+        created_at: "作成日"
+      movie:
+        id: "登録番号"
+        title: "タイトル"
+        image_id: "画像"
+        introduction: "紹介文"
+        created_at: "作成日"
+        updated_at: "更新日"
+      member:
+        id: "登録番号"
+        name: "名前"
+        name_kana: "フリガナ"
+        password: "パスワード"
+        image_id: "プロフィール画像"
+        email: "メールアドレス"
+        is_deleted: "ステータス"
+        introduction: "自己紹介"
+        created_at: "作成日"
+        updated_at: "更新日"
