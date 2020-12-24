@@ -12,7 +12,7 @@
 <div class="row">
 	<div class="col-xs-3 review-members">
 		<%= attachment_image_tag(review.member, :image, :fill, 80, 80, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg") %><br>
-		<%= link_to review.member.name, member_path(review) %>さん<br>
+		<%= link_to review.member.name, member_path(review.member) %>さん<br>
 	</div>
 	<div class="col-xs-9 review-posts">
 		<%= review.title %>
