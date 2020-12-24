@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_200911) do
+ActiveRecord::Schema.define(version: 2020_12_07_095556) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2020_11_28_200911) do
     t.index ["member_id"], name: "index_favorites_on_member_id"
     t.index ["movie_id"], name: "index_favorites_on_movie_id"
     t.index ["review_id"], name: "index_favorites_on_review_id"
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "name"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "ivents", force: :cascade do |t|
@@ -101,8 +109,18 @@ ActiveRecord::Schema.define(version: 2020_11_28_200911) do
     t.index ["movie_id"], name: "index_reviews_on_movie_id"
   end
 
+  create_table "tag_relationships", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id", "tag_id"], name: "index_tag_relationships_on_movie_id_and_tag_id", unique: true
+    t.index ["movie_id"], name: "index_tag_relationships_on_movie_id"
+    t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
-    t.string "tag_name"
+    t.string "tag_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

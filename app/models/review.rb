@@ -2,10 +2,10 @@ class Review < ApplicationRecord
   belongs_to :member
   belongs_to :movie
   has_many :favorites, dependent: :destroy
-#1から5段階の間の評価になるよう設定
+#0.5から5段階の間の評価になるよう設定
   validates :score, numericality: {
     less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 1
+    greater_than_or_equal_to: 0.5
   }, presence: true
 
   validates :title, presence: true

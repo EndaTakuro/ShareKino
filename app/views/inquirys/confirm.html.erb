@@ -1,0 +1,29 @@
+<%= form_for @inquiry, :url => inquirys_done_path do |f| %>
+  <div>
+    <h2>お問い合わせ内容確認</h2>
+    <div>
+      <strong>名前</strong>
+      <p>
+        <!-- エラー時に値を保持するためhiddenで記述 -->
+        <%= f.hidden_field :name %>
+        <%= @inquiry.name %>
+      </p>
+    </div>
+    <div>
+      <strong>メールアドレス</strong>
+      <p>
+        <%= f.hidden_field :email %>
+        <%= @inquiry.email %>
+      </p>
+    </div>
+    <div>
+      <strong>お問い合わせ内容</strong>
+      <p>
+        <%= f.hidden_field :message %>
+        <%= @inquiry.message %>
+      </p>
+    </div>
+      <%= f.submit '戻る', name: 'back' %>
+      <%= f.submit '送信する' %>
+  </div>
+<% end %>

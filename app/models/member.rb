@@ -10,8 +10,10 @@ class Member < ApplicationRecord
   validates :name, presence: true, length: {maximum: 20, minimum: 1, allow_blank: true}
   validates :name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。', allow_blank: true}
 
-  def favorited_by?(member)
-		favorites.where(member_id: member.id).exists?
+  #ゲストユーザーの作成
+  def self.guest
+    find_or_create_by!(name:'ゲスト', name_kana:'ゲスト', email: 'guest@example.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+    end
   end
-
 end

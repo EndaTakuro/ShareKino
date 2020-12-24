@@ -10,5 +10,7 @@
 </table>
 
 <div class="row">
+	<% if current_member == member %>
 	<%= link_to 'ユーザー情報を編集する', edit_member_path(member), class: "col-xs-12 btn btn-success edit_member_#{member.id}" %>
+	<% end %>
 </div>

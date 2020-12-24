@@ -24,6 +24,7 @@
  width: 100%;
  height: 120px;
  padding: 30px 20px;
+ margin-bottom: 40px;
  border-bottom: solid 1px #383838;
  background-color: #444444;
  }
@@ -33,14 +34,17 @@
   padding: 0.5em 0;/*上下の余白*/
   border-top: solid 3px #364e96;
   border-bottom: solid 3px #364e96;
+  margin-right: 30px;
 }
 
 .header-item {
   position: relative;
   padding: 0.25em 1em;
-  border: solid 2px black;
+  border: solid 2px white;
   border-radius: 3px 0 3px 0;
+
 }
+
 
 .logo {
  color: #dcdcdc;
@@ -50,6 +54,7 @@
    color: #dcdcdc;
  }
 }
+
 
 .like-btn {
   color: #8899a6;
@@ -66,3 +71,18 @@
 .review-posts {
   padding: 10px 10px;
 }
+
+
+ .footer_inner {
+ margin-top: 110px;
+ height: 120px;
+ background-color: #A9A9A9;
+ }
+
+ .footer_box {
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+ height: 80px;
+
+ }

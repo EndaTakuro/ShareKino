@@ -12,30 +12,24 @@
           ようこそ、<%= current_member.name %>さん！
         </li>
         <li class="header-item">
-          <%= link_to " mypage", member_path(current_member), class: "header_btn glyphicon glyphicon-user" %>
+          <%= link_to " mypage", member_path(current_member), class:"header_btn glyphicon glyphicon-user", :style=>"color:white; text-decoration:none;" %>
         </li>
         <li class="header-item">
-          <%= link_to " movies", movies_path, class: "header_btn glyphicon glyphicon-leaf" %>
+          <%= link_to " movies", movies_path, class: "header_btn glyphicon glyphicon-film", :style=>"color:white; text-decoration:none;" %>
         </li>
         <li class="header-item">
-          ivents
-        </li>
-        <li class="header-item">
-          <%= link_to " log out", destroy_member_session_path, method: :delete, class: "header_btn glyphicon glyphicon-leaf" %>
+          <%= link_to " log out", destroy_member_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out", :style=>"color:white; text-decoration:none;" %>
         </li>
       <% else %>
       <!--ログインしていない時-->
         <li class="header-item">
-          <%= link_to " about", about_path, class: "header_btn glyphicon glyphicon-leaf" %>
+          <%= link_to " movies", movies_path, class: "header_btn glyphicon glyphicon-film", :style=>"color:white; text-decoration:none;" %>
         </li>
         <li class="header-item">
-          <%= link_to " movies", movies_path, class: "header_btn glyphicon glyphicon-leaf" %>
+          <%= link_to " sign up", new_member_registration_path, class: "header_btn glyphicon glyphicon-check", :style=>"color:white; text-decoration:none;" %>
         </li>
         <li class="header-item">
-          <%= link_to " sign up", new_member_registration_path, class: "header_btn glyphicon glyphicon-leaf" %>
-        </li>
-        <li class="header-item">
-          <%= link_to " log in", new_member_session_path, class: "header_btn glyphicon glyphicon-leaf" %>
+          <%= link_to " log in", new_member_session_path, class: "header_btn glyphicon glyphicon-log-in", :style=>"color:white; text-decoration:none;" %>
         </li>
       <% end %>
     </ul>

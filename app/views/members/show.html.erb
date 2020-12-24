@@ -13,18 +13,7 @@
 						<%= image_tag review.movie.image_id.url ,width: '100px' %><br>
 						<%= link_to review.movie.title, movie_path(review.movie_id) %><br>
 					</div>
-					<div id="star-rate-<%= review.id %>"></div>
-          <script>
-	          $('#star-rate-<%= review.id %>').raty({
-	            size: 36,
-	            starOff:  '<%= asset_path('star-off.png') %>',
-	            starOn : '<%= asset_path('star-on.png') %>',
-	            starHalf: '<%= asset_path('star-half.png') %>',
-	            half: true,
-	            readOnly: true,
-	            score: <%= review.score %>,
-	          });
-          </script>
+					<%= render "reviews/star", review: review %>
          	<br>
         </div>
         <div class="col-xs-9">

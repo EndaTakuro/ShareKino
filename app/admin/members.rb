@@ -44,7 +44,6 @@ ActiveAdmin.register Member do
     f.inputs do
       f.input :name
       f.input :name_kana
-      f.input :image_id, :as => :file
       f.input :email
       f.input :is_deleted, as: :select,collection:{"登録中"=>false, "退会中"=>true}
     end

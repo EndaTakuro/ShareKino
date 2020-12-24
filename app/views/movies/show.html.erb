@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="text-center col-xs-9 col-xs-3-offset">
+	<div class="text-center col-xs-9 col-xs-3-offset movie-image">
     <%= image_tag @movie.image_id.url, width: '200px' if @movie.image_id.present? %><br>
 		<%= @movie.title %><br>
 		<%= @movie.introduction %><br>
@@ -8,34 +8,23 @@
 </div>
 
 <h3 class="text-center">レビュー一覧</h3>
-<% @movie.reviews.each do |review| %>
-	<div class="row">
+	<% @movie.reviews.each do |review| %>
+<div class="row">
 	<div class="col-xs-3 review-members">
-	<%= attachment_image_tag(review.member, :image, :fill, 80, 80, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg") %><br>
-	<%= review.member.name %>さん<br>
+		<%= attachment_image_tag(review.member, :image, :fill, 80, 80, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg") %><br>
+		<%= link_to review.member.name, member_path(review) %>さん<br>
 	</div>
 	<div class="col-xs-9 review-posts">
-	<%= review.title %>
-	<%= render "favorites/favorite-btn", review: review %>
-	<div id="star-rate-<%= review.id %>"></div>
-    <script>
-	    $('#star-rate-<%= review.id %>').raty({
-		    size: 36,
-	      starOff:  '<%= asset_path('star-off.png') %>',
-	      starOn : '<%= asset_path('star-on.png') %>',
-	      starHalf: '<%= asset_path('star-half.png') %>',
-	      half: true,
-	      readOnly: true,
-	      score: <%= review.score %>,
-	    });
-    </script>
-	<%= review.content %><br>
-	<div class="col-md-12 edit-button">
-        <% if current_member == review.member %>
-          <%= link_to 'レビューを編集', edit_movie_review_path(review), class:'btn btn-success' %>
-          <%= link_to 'レビューを削除', movie_review_path(review), method: :delete, class:'btn btn-danger' %>
-        <% end %>
-      </div>
+		<%= review.title %>
+		<%= render "favorites/favorite-btn", review: review %>
+		<%= render "reviews/star", review: review %>
+		<%= review.content %><br>
+		<div class="col-md-12 edit-button">
+       <% if current_member == review.member %>
+         <%= link_to 'レビューを編集', edit_movie_review_path(review), class:'btn btn-success' %>
+         <%= link_to 'レビューを削除', movie_review_path(review), method: :delete, class:'btn btn-danger' %>
+       <% end %>
+    </div>
 	</div>
-	</div>
-	<% end %>
+</div>
+<% end %>

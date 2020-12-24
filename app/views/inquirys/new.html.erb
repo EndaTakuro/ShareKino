@@ -1,0 +1,19 @@
+<%= form_for(@inquiry, url: {action: :confirm}) do |f| %>
+  <div>
+    <h2>お問い合わせフォーム</h2>
+    <%= render "layouts/error_messages", model: f.object %>
+    <div>
+      <strong>名前</strong>
+      <p><%= f.text_field :name, placeholder:'20文字以内' %></p>
+    </div>
+    <div>
+      <strong>メールアドレス</strong>
+      <p><%= f.email_field :email, placeholder:'30文字以内' %></p>
+    </div>
+    <div>
+      <strong>お問い合わせ内容</strong>
+      <p><%= f.text_area :message, placeholder: '200文字以内' %></p>
+    </div>
+    <%= f.submit '確認画面へ' %>
+  </div>
+<% end %>
